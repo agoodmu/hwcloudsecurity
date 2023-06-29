@@ -1,0 +1,17 @@
+---
+checks:
+- code: NET001
+  description: Custom check to ensure the CostCentre tag is applied to all resources that support tags
+  impact: By not having CostCentre we can't keep track of billing
+  resolution: Add the CostCentre tag
+  requiredTypes:
+  - provider
+  requiredLabels:
+  - huaweicloud
+  severity: ERROR
+  matchSpec:
+    name: shared_config_file
+    action: isPresent
+  errorMessage: Using share config file is not permitted
+  relatedLinks:
+  - http://internal.acmecorp.com/standards/aws/tagging.html
