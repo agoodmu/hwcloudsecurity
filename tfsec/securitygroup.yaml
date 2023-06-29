@@ -8,7 +8,7 @@ checks:
   - resource
   requiredLabels:
   - huaweicloud_vpc
-  severity: ERROR
+  severity: CRITICAL
   matchSpec:
     name: name
     action: contains
