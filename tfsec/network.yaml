@@ -5,7 +5,7 @@ checks:
   impact: Using shared config leads to credential leaking
   resolution: use assume role
   requiredTypes:
-  - terraform
+  - provider
   requiredLabels:
   - huaweicloud
   severity: ERROR

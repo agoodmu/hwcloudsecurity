@@ -1,0 +1,18 @@
+---
+checks:
+- code: NET001
+  description: Custom check to ensure the CostCentre tag is applied to EC2 instances
+  impact: By not having CostCentre we can't keep track of billing
+  resolution: Add the CostCentre tag
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - huaweicloud_vpc
+  severity: ERROR
+  matchSpec:
+    name: cidr
+    action: equals
+    value: 10.100.0.0/16
+  errorMessage: The required CostCentre tag was missing
+  relatedLinks:
+  - http://internal.acmecorp.com/standards/aws/tagging.html
