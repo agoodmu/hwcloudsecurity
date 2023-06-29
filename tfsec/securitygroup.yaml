@@ -10,9 +10,9 @@ checks:
   - huaweicloud_vpc
   severity: ERROR
   matchSpec:
-    name: cidr
+    name: name
     action: equals
-    value: 10.100.0.0/16
+    value: test-one
   errorMessage: The required CostCentre tag was missing
   relatedLinks:
   - http://internal.acmecorp.com/standards/aws/tagging.html
