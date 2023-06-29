@@ -1,9 +1,9 @@
 ---
 checks:
-- code: NET001
-  description: Custom check to ensure the CostCentre tag is applied to all resources that support tags
-  impact: By not having CostCentre we can't keep track of billing
-  resolution: Add the CostCentre tag
+- code: IAM001
+  description: Custom check to ensure the Huawei cloud provider is not using share config
+  impact: Using shared config leads to credential leaking
+  resolution: use assume role
   requiredTypes:
   - provider
   requiredLabels:
