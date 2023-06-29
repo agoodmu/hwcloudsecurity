@@ -11,7 +11,7 @@ checks:
   severity: ERROR
   matchSpec:
     name: name
-    action: equals
+    action: contains
     value: test-one
   errorMessage: The required CostCentre tag was missing
   relatedLinks:
