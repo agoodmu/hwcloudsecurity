@@ -7,7 +7,7 @@ checks:
   requiredTypes:
   - provider
   requiredLabels:
-  - huaweicloud
+  - '*'
   severity: ERROR
   matchSpec:
     name: shared_config_file
