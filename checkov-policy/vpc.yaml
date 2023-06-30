@@ -1,0 +1,16 @@
+---
+metadata:
+  name: "Not allowing specific CIDR"
+  id: "HW_VPC_0011"
+  category: "NETWORKING"
+scope:
+  provider: huaweicloud
+definition:
+  not:
+    cond_type: "attribute"
+    resource_types:
+      - huaweicloud_vpc
+    attribute: cidr
+    operator: "subset"
+    value:
+      - "10.100.0.0/16"
