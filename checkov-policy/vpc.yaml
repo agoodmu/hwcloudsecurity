@@ -11,6 +11,6 @@ definition:
     resource_types:
       - huaweicloud_vpc
     attribute: cidr
-    operator: "subset"
+    operator: any
     value:
       - "10.100.0.0/16"

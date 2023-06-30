@@ -6,12 +6,11 @@ metadata:
 scope:
   provider: huaweicloud
 definition:
-  not:
-    cond_type: "attribute"
-    resource_types:
-      - "provider.huaweicloud"
-    attribute: region
-    operator: "subset"
-    value:
-      - "ap-southeast-3"
-      - "ap-southeast-1"
+  cond_type: "attribute"
+  resource_types:
+    - "provider.huaweicloud"
+  attribute: region
+  operator: any
+  value:
+    - "ap-southeast-3"
+    - "ap-southeast-1"
