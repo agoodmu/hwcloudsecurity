@@ -12,6 +12,6 @@ __rego_input__ := {"selector": [{"type": "terraform"}]}
 ForbiddenCIDR := ["10.0.0.0/16","10.10.0.0/16","10.100.0.0/16"]
 
 deny[msg] {
-	input.resource.huaweicloud_vpc[_].cidr in ForbiddenCIDR
+	input.resource.huaweicloud_vpc[*].cidr in ForbiddenCIDR
 	msg = "The CIDR for vpc is forbidden, Please choose another CIDR"
 }
