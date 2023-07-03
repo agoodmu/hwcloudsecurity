@@ -1,5 +1,7 @@
 package vpc.ID001
 
+import future.keywords.every
+
 __rego_metadata__ := {
 	"id": "ID001",
 	"title": "Disabled VPC CIDR",
