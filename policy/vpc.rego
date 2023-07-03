@@ -13,4 +13,5 @@ ForbiddenCIDR := ["10.0.0.0/16","10.10.0.0/16"]
 
 deny[msg] {
 	input.resource.huaweicloud_vpc[_].cidr in ForbiddenCIDR
+	msg = "The CIDR for vpc is forbidden, Please choose another CIDR"
 }
