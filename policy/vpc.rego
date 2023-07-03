@@ -9,7 +9,7 @@ __rego_metadata__ := {
 
 __rego_input__ := {"selector": [{"type": "terraform"}]}
 
-ForbiddenCIDR := ["10.0.0.0/16","10.10.0.0/16"]
+ForbiddenCIDR := ["10.0.0.0/16","10.10.0.0/16","10.100.0.0/16"]
 
 deny[msg] {
 	input.resource.huaweicloud_vpc[_].cidr in ForbiddenCIDR
