@@ -12,6 +12,7 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         self.ipaddress = ipaddress
 
     def scan_resource_conf(self, conf: dict[str,list[any]]) -> CheckResult:
+        print(conf)
         """
             Looks for configuration at security group ingress rules :
             https://registry.terraform.io/providers/huaweicloud/huaweicloud/latest/docs/resources/networking_secgroup_rule
@@ -28,7 +29,7 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         :return: <CheckResult>
         """
 
-        if conf['direction'][0] == 'ingress':  # This means it's an huaweicloud_networking_secgroup_rule egress resource.
+        if conf['direction'][0] == 'egress':  # This means it's an huaweicloud_networking_secgroup_rule egress resource.
             return CheckResult.PASSED
         
         """
@@ -37,22 +38,22 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         if self.ipaddress != None:
             if type(self.ipaddress) is list:
                 if 'remote_ip_prefix' in conf:
-                    if conf['remote_ip_prefix'] in self.ipaddress:
+                    if conf['remote_ip_prefix'][0] in self.ipaddress:
                         return CheckResult.FAILED
             else:
                 if 'remote_ip_prefix' in conf:
-                    if conf['remote_ip_prefix'] == self.ipaddress:
+                    if conf['remote_ip_prefix'][0] == self.ipaddress:
                         return CheckResult.FAILED
 
         """
         check if port is allowed
         """
         if 'port_range_min' in conf:
-            if int(conf['port_range_min']) <= int(self.port) <= int(conf['port_range_max']):
+            if int(conf['port_range_min'][0]) <= int(self.port) <= int(conf['port_range_max'][0]):
                 return CheckResult.FAILED
             
         if 'ports' in conf:
-            if str(self.port) in str.split(conf['ports'],","):
+            if str(self.port) in str.split(conf['ports'][0],","):
                 return CheckResult.FAILED
         
         return CheckResult.PASSED
