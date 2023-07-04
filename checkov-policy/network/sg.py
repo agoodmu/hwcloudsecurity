@@ -1,7 +1,5 @@
 from checkov.common.models.enums import CheckResult, CheckCategories
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
-from checkov.common.util.type_forcers import force_list
-from checkov.common.util.type_forcers import force_int
 
 
 class UnLimitedIngressTraffic(BaseResourceCheck):
@@ -59,4 +57,10 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         
         return CheckResult.PASSED
     
-check = UnLimitedIngressTraffic('HW_NETWORK_001',22)
+
+class SecurityGroupUnrestrictedIngress22(UnLimitedIngressTraffic):
+    def __init__(self):
+        super().__init__(check_id="HW_NETWORK_001", port=22)
+    
+
+check = SecurityGroupUnrestrictedIngress22()
