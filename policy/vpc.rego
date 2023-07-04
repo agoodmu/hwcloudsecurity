@@ -1,6 +1,7 @@
 package vpc.ID001
 
 import future.keywords.every
+import future.keywords.in
 
 __rego_metadata__ := {
 	"id": "ID001",
