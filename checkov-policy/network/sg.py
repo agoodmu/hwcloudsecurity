@@ -11,7 +11,7 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         self.port = port
         self.ipaddress = ipaddress
 
-    def scan_resource_conf(self, conf):
+    def scan_resource_conf(self, conf: dict[str,list[any]]) -> CheckResult:
         """
             Looks for configuration at security group ingress rules :
             https://registry.terraform.io/providers/huaweicloud/huaweicloud/latest/docs/resources/networking_secgroup_rule
@@ -28,7 +28,7 @@ class UnLimitedIngressTraffic(BaseResourceCheck):
         :return: <CheckResult>
         """
 
-        if conf['direction'] == 'egress':  # This means it's an huaweicloud_networking_secgroup_rule egress resource.
+        if conf['direction'][0] == 'ingress':  # This means it's an huaweicloud_networking_secgroup_rule egress resource.
             return CheckResult.PASSED
         
         """
